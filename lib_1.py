@@ -68,7 +68,7 @@ def weighted_mean(list):
         return top_sum / bottom_sum
     return None
 
-
+#next relations
 def test_function():
     print("test")
     
