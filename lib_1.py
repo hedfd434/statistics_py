@@ -49,6 +49,26 @@ def Mode(data):
 
     return None
 
+def weighted_mean(list):
+    #first row are values, seconds row ale assigned weighths
+
+    if(len(list[0]) == len(list[1])):
+        #calculate the top sum
+        top_sum = 0
+        for i in range(len(list[0])):
+            top_sum += list[0][i] * list[1][i]
+
+        #calulate the bottom sum
+        bottom_sum = 0
+        for n in range(len(list[1])):
+            bottom_sum += list[1][n]
+
+        print(top_sum, ", ", bottom_sum)
+
+        return top_sum / bottom_sum
+    return None
+
+
 def test_function():
     print("test")
     
