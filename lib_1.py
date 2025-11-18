@@ -1,4 +1,10 @@
 import math
+
+# def range(data):
+#     min_val = min(data)
+#     max_val = max(data)
+#     return [min_val, max_val, abs(max_val - min_val)]
+
 def arithemtic_mean(data):
     #print("data type", type(data))
     return sum(data) / len(data)
@@ -68,9 +74,52 @@ def weighted_mean(list):
         return top_sum / bottom_sum
     return None
 
+def variation(data):
+    avg = arithemtic_mean(data)
+    top_sum = 0
+    for k in range(len(data)):
+        top_sum += math.pow(data[k], 2)
+
+    return (top_sum / len(data)) - pow(avg, 2)
+
+def standard_deviation(data):
+    var = variation(data)
+    # max(0, var) for return to make sure that there will not be a aquare of negative value
+    return max(math.sqrt(var), 0)
+
+def average_absolute_deviation(data):
+    avg = arithemtic_mean(data)
+
+    top_sum = 0
+    for k in range(len(data)):
+        top_sum += abs((data[k] - avg))
+
+    return top_sum / len(data)
+
 #next relations
 def test_function():
     print("test")
     
 if __name__ == "__main__":
-    pass
+    print("test")
+
+    list = [4, 9, 11, 13, 13]
+
+    list_2 = [
+        [10, 25, 5, 40, 15],          # Row 1: Values
+        [0.5, 0.2, 0.1, 0.15, 0.05]   # Row 2: Weights
+    ]
+
+    # print("range = ", range(list))
+
+    print("arithmetic mean = ", arithemtic_mean(list))
+
+    print("median = ", median(list))
+
+    print("weighted mean = ", weighted_mean(list_2))
+
+    print("variance = ", variation(list))
+
+    print("standard deviation = ", standard_deviation(list))
+
+    print("average absolute deviation = ", average_absolute_deviation(list))
