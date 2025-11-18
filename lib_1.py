@@ -96,9 +96,37 @@ def average_absolute_deviation(data):
 
     return top_sum / len(data)
 
+def correlation(data):
+    # uses 2d array
+    x_mean = arithemtic_mean(data[0])
+    y_mean = arithemtic_mean(data[1])
+
+    top_sum = 0
+    for k in range(len(data[0])):
+        top_sum += ((data[0][k]) - x_mean) * (data[1][k] - y_mean)
+    
+    bottom_x_square = 0
+    for z in range(len(data[0])):
+        bottom_x_square += math.pow((data[0][z] - x_mean), 2)
+    
+    bottom_x_square = math.sqrt(bottom_x_square)
+
+    bottom_y_square = 0
+    for z in range(len(data[1])):
+        bottom_y_square += math.pow((data[1][z] - y_mean), 2)
+    bottom_y_square = math.sqrt(bottom_y_square)
+
+    bottom_product = bottom_x_square * bottom_y_square
+
+    return top_sum / bottom_product
+    print(x_mean, y_mean)
+
+    return None
+
 #next relations
 def test_function():
     print("test")
+    return None
     
 if __name__ == "__main__":
     print("test")
@@ -107,7 +135,13 @@ if __name__ == "__main__":
 
     list_2 = [
         [10, 25, 5, 40, 15],          # Row 1: Values
-        [0.5, 0.2, 0.1, 0.15, 0.05]   # Row 2: Weights
+        [1, 2, 3, 4, 5]   # Row 2: Weights
+    ]
+
+    list_3 = [
+        [1, 2, 3, 4, 5], # x 
+        [10, 25, 5, 40, 15], # y
+
     ]
 
     # print("range = ", range(list))
@@ -123,3 +157,5 @@ if __name__ == "__main__":
     print("standard deviation = ", standard_deviation(list))
 
     print("average absolute deviation = ", average_absolute_deviation(list))
+
+    print(correlation(list_3))
